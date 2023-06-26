@@ -112,12 +112,12 @@
       }
       //maxwt();
       //console.log(b);
-      start();
+      
       showPersons(persons);
 
       function showPersons(arr) {
         // console.log(nwwt);
-
+start();
         let v1 = getValue();
         let arr1 = v1.map(function (ele) {
           let st = '<tr class="' + getColor(ele.newwt, ele.oldwt) + '">';
@@ -262,7 +262,7 @@
         persons.push(st);
         nwtarr();
         // console.log(nwwt);
-        start();
+        
         showPersons(persons);
         //console.log(persons);
       }
