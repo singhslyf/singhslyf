@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=yes"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
+
+  <body>
+    <div class="container">
+      <div id="show"></div>
+    </div>
+
+    <script>
+      let employees = [
+        {
+          name: "Anna",
+          email: "Anna45@email.com",
+          age: 27,
+          dept: "Technology",
+          gradCourse: "B.Tech",
+          gradYear: "2015",
+          gradPerf: "Good",
+          postgrad: false,
+          workBefore: true,
+          workEx: "0-1 year",
+        },
+        {
+          name: "Mary",
+          email: "mary16@email.com",
+          age: 30,
+          dept: "Accounts",
+          gradCourse: "B.Com",
+          gradYear: 2015,
+          gradPerf: "Good",
+          postgrad: true,
+          workBefore: false,
+          workEx: "None",
+        },
+        {
+          name: "Jack",
+          email: "jack@email.com",
+          age: 33,
+          dept: "Operations",
+          gradCourse: "BA",
+          gradYear: 2015,
+          gradPerf: "Average",
+          postgrad: false,
+          workBefore: true,
+          workEx: "3+ years",
+        },
+        {
+          name: "John",
+          email: "john@email.com",
+          age: 24,
+          dept: "Technology",
+          gradCourse: "B.Tech",
+          gradYear: 2015,
+          gradPerf: "Good",
+          postgrad: false,
+          workBefore: false,
+          workEx: "None",
+        },
+        {
+          name: "Edwards",
+          email: "edwards@email.com",
+          age: 29,
+          dept: "Accounts",
+          gradCourse: "B.Com",
+          gradYear: 2015,
+          gradPerf: "Excellent",
+          postgrad: true,
+          workBefore: true,
+          workEx: "3+ years",
+        },
+        {
+          name: "Tim",
+          email: "tim001@email.com",
+          age: 31,
+          dept: "Operations",
+          gradCourse: "BSc",
+          gradYear: 2015,
+          gradPerf: "Average",
+          postgrad: false,
+          workBefore: true,
+          workEx: "0-1 year",
+        },
+        {
+          name: "Julia",
+          email: "julia@email.com",
+          age: 28,
+          dept: "Technology",
+          gradCourse: "B.Tech",
+          gradYear: 2015,
+          gradPerf: "Excellent",
+          postgrad: true,
+          workBefore: true,
+          workEx: "1-3 years",
+        },
+        {
+          name: "Steve",
+          email: "steve@email.com",
+          age: 25,
+          dept: "Operations",
+          gradCourse: "BA",
+          gradYear: 2015,
+          gradPerf: "Good",
+          postgrad: false,
+          workBefore: true,
+          workEx: "0-1 year",
+        },
+        {
+          name: "Sam",
+          email: "sam77@email.com",
+          age: 33,
+          dept: "HR",
+          gradCourse: "BBA",
+          gradYear: 2015,
+          gradPerf: "Good",
+          postgrad: false,
+          workBefore: true,
+          workEx: "1-3 years",
+        },
+      ];
+
+      expenseArr = [
+        {
+          name: "John",
+          category: "Local Travel",
+          billId: "NP7561",
+          amount: 64,
+          payment: "Self",
+          approved: true,
+        },
+        {
+          name: "Anna",
+          category: "Communication",
+          billId: "BN8561",
+          amount: 39,
+          payment: "Self",
+          approved: false,
+        },
+        {
+          name: "Edwards",
+          category: "Local Travel",
+          billId: "AT5461",
+          amount: 58,
+          payment: "Corporate Card",
+          approved: true,
+        },
+        {
+          name: "Julia",
+          category: "Local Travel",
+          billId: "RR5492",
+          amount: 71,
+          payment: "Self",
+          approved: true,
+        },
+        {
+          name: "Julia",
+          category: "Out of City Travel",
+          billId: "KT8785",
+          amount: 277,
+          payment: "Bill to Company",
+          approved: true,
+        },
+        {
+          name: "Edwards",
+          category: "Others",
+          billId: "UR0400",
+          amount: 25,
+          payment: "Corporate Card",
+          approved: false,
+        },
+        {
+          name: "Edwards",
+          category: "Out of City Travel",
+          billId: "CC6586",
+          amount: 305,
+          payment: "Corporate Card",
+          approved: false,
+        },
+        {
+          name: "Julia",
+          category: "Communication",
+          billId: "DL3425",
+          amount: 43,
+          payment: "Self",
+          approved: false,
+        },
+        {
+          name: "Julia",
+          category: "Out of City Travel",
+          billId: "MW65775",
+          amount: 248,
+          payment: "Bill to Company",
+          approved: true,
+        },
+        {
+          name: "Edwards",
+          category: "Others",
+          billId: "JR56732",
+          amount: 52,
+          payment: "Corporate Card",
+          approved: true,
+        },
+        {
+          name: "Julia",
+          category: "Out of City Travel",
+          billId: "BK0074",
+          amount: 405,
+          payment: "Bill to Company",
+          approved: false,
+        },
+        {
+          name: "Edwards",
+          category: "Communication",
+          billId: "JR56732",
+          amount: 72,
+          payment: "Corporate Card",
+          approved: true,
+        },
+      ];
+
+      let departmentsArr = ["Technology", "Operations", "Accounts", "HR"];
+
+      let emplArr = [];
+      let emplA = () => {
+        for (let i = 0; i < employees.length; i++) {
+          emplArr.push(employees[i].name);
+        }
+      };
+      emplA();
+
+      let cArr = [
+        "Local Travel",
+        "Communication",
+        "Out of City Travel",
+        "Others",
+      ];
+
+      let paymentArr = ["Corporate Card", "Bill to company", "Self"];
+
+      let editIndex = -1;
+      let myProduct = {};
+      let error = {};
+      let myProducT = {};
+      let err = {};
+
+      let gradY = [];
+      let gY = () => {
+        for (let i = 2000; i <= 2020; i++) {
+          gradY.push("" + i + "");
+        }
+      };
+      gY();
+      //console.log(gradY);
+
+      gradEArr = ["Excellent", "Good", "Average", "Poor"];
+
+      expArr = ["None", "0-1 year", "1-3 years", "3+ years"];
+
+      let makeNav = (active = 0) => {
+        let str = '<nav class="navbar navbar-expand-lg navbar-light bg-light">';
+        str += '<a class="navbar-brand" href="#">Employee System</a>';
+        str +=
+          '<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">';
+        str += '<span class="navbar-toggler-icon"></span>';
+        str += "</button>";
+        str += '<div class="collapse navbar-collapse" id="navbarNavDropdown">';
+        str += '<ul class="navbar-nav">';
+        let active1 = active === 1 ? "active" : "";
+        let active2 = active === 2 ? "active" : "";
+        let active3 = active === 3 ? "active" : "";
+        let active4 = active === 4 ? "active" : "";
+        let active5 = active === 5 ? "active" : "";
+        let active6 = active === 6 ? "active" : "";
+        str += '<li class="nav-item ' + active1 + '"> ';
+        str += '<a class="nav-link" onclick="showEmp()"> Show Employees </a>';
+        str += "</li>";
+        str += ' <li class="nav-item ' + active2 + '">';
+        str +=
+          '<a class="nav-link" onclick="addEmpForm()"> Add an Employee </a>';
+        str += "</li>";
+        str += ' <li class="nav-item ' + active3 + '">';
+        str += '<a class="nav-link" onclick="showDpt()"> Departments </a>';
+        str += "</li>";
+        str += ' <li class="nav-item ' + active4 + '">';
+        str += '<a class="nav-link" onclick="addDpt()"> Add a Department</a>';
+        str += "</li>";
+        str += "</li>";
+        str += ' <li class="nav-item ' + active5 + '">';
+        str += '<a class="nav-link" onclick="showExp(expenseArr)">Expenses</a>';
+        str += "</li>";
+        str += "</li>";
+        str += ' <li class="nav-item ' + active6 + '">';
+        str += '<a class="nav-link" onclick="addExp()"> Add an Expense</a>';
+        str += "</li>";
+        str += "</ul>";
+        str += "</div>";
+        str += "</nav>";
+        return str + "<br/>";
+      };
+
+      let show = (active = 0, arr) => {
+        let str = makeNav(active);
+        //console.log(str);
+        active === 1 ? (str += showEms()) : (str += "");
+        active === 2 ? (str += showForm()) : (str += "");
+        active === 3 ? (str += showDepartments()) : (str += "");
+        active === 4 ? (str += addDepartments()) : (str += "");
+        active === 5 ? (str += showExpenses(arr)) : (str += "");
+        active === 6 ? (str += addexpForm()) : (str += "");
+        document.getElementById("show").innerHTML = str;
+      };
+      show();
+      let showEmp = () => {
+        editIndex = -1;
+        myProduct = {};
+        show(1);
+      };
+      let addEmpForm = () => {
+        show(2);
+      };
+      let showDpt = () => {
+        show(3);
+      };
+      let addDpt = () => {
+        show(4);
+      };
+      let showExp = (arr) => {
+        myProducT = {};
+        show(5, arr);
+      };
+      let addExp = () => {
+        show(6);
+      };
+
+      let showEms = () => {
+        let b1 = employees.map((pr, index) => {
+          let { name, email, age, dept, gradCourse, workEx } = pr;
+          let str = '<div class="row border-bottom border-left border-right">';
+          str += '<div class="col-2">' + name + "</div>";
+          str += '<div class="col-2">' + email + "</div>";
+          str += '<div class="col-1">' + age + "</div>";
+          str += '<div class="col-2">' + dept + "</div>";
+          str += '<div class="col-1">' + gradCourse + "</div>";
+          str += '<div class="col-2">' + workEx + "</div>";
+          str +=
+            '<div class="col-2"><button style="background-color:grey;border:none" onclick=editE("' +
+            index +
+            '")><i class="fa-regular fa-pen-to-square" style="background-color:grey;color:black"></i></button><button style="background-color:red;border:none" onclick=deleteE("' +
+            index +
+            '")><i class="fa-regular fa-trash-can" style="color:white"></i></button><button style="background-color:yellow;border:none" onclick=filterExp("' +
+            name +
+            '")><i class="fa fa-car"></i></button></div>';
+          str += "</div>";
+          return str;
+        });
+        let header = '<h1 class="text-center">List of Persons</h1>';
+        header += '<div class="row bg-dark text-white">';
+        header += '<div class="col-2" onclick=sort(0)>Employee</div>';
+        header += '<div class="col-2" onclick=sort(1)>Email</div>';
+        header += '<div class="col-1" onclick=sort(2)>Age</div>';
+        header += '<div class="col-2" onclick=sort(3)>Dept</div>';
+        header += '<div class="col-1" onclick=sort(4)>Graduation</div>';
+        header += '<div class="col-2" onclick=sort(5)>Work Ex</div>';
+        header += '<div class="col-2"></div>';
+        header += "</div>";
+        header += b1.join("");
+        header +=
+          '<button class="btn btn-primary mt-1" onclick="Cview()"> Change View </button>';
+
+        return header;
+      };
+
+      let showForm = () => {
+        let {
+          name = "",
+          email = "",
+          age = "",
+          dept = "",
+          gradCourse = "",
+          gradYear = "",
+          gradPerf = "",
+          postgrad = "",
+          workBefore = "",
+          workEx = "",
+        } = myProduct;
+        let heading =
+          editIndex >= 0 ? "Edit Employee Details" : "Add a Employee Form";
+        let str = '<h1 class="text-center">' + heading + "</h1>";
+        str += "<form>";
+        str += makeText(
+          "name",
+          "Employee Name",
+          "Enter the Name of the Employee",
+          name,
+          error.name
+        );
+        str += makeText(
+          "email",
+          "Email",
+          "Enter the Email",
+          email,
+          error.email
+        );
+        str += makeText("age", "Age", "Enter the Age", age, error.age);
+        str += makeDrop(
+          "department",
+          departmentsArr,
+          "Select Department",
+          dept,
+          error.dept
+        );
+        str += makeText(
+          "graduation",
+          "Graduation Degree",
+          "What degree did you get in graduation ? ",
+          gradCourse
+        );
+        str += makeDrop("gradYear", gradY, "Select Graduation Year", gradYear);
+        str +=
+          "Overall performance in Grades : " +
+          makeRad("grade", gradEArr, gradPerf);
+        str += '<div class="form-group">';
+        str += '<div class="form-check">';
+        let c1 = postgrad == "true" ? "checked" : "";
+        str +=
+          '<input class="form-check-input" type="checkbox" value="" id="1" ' +
+          c1 +
+          ">";
+        str +=
+          '<label class="form-check-label" for="flexCheckDefault">Are you a post graduate ?</label>';
+        str += "</div>";
+        str += '<div class="form-check">';
+        let c4 = workBefore == "true" ? "checked" : "";
+        str +=
+          '<input class="form-check-input" type="checkbox" value="" id="2" ' +
+          c4 +
+          ">";
+        //console.log(c1, c4);
+        str +=
+          '<label class="form-check-label" for="flexCheckDefault">Do you have prior work experience ?</label>';
+        str += "</div>";
+        str += "</div>";
+        str +=
+          "Years of Experience : " +
+          makeRad("experience", expArr, workEx, error.workEx);
+        str += "</form>";
+        str +=
+          '<button class="btn btn-primary" onclick="submiT()"> Submit </button>';
+        return str;
+      };
+
+      let makeText = (id, label, placeholder = "", value = "", err = "") => {
+        let str = '<div class="form-group">';
+        str += "<label>" + label + "</label>";
+        let readonly = editIndex >= 0 && id == "prodName" ? "readOnly" : "";
+        str +=
+          '<input  type="text" class="form-control" id="' +
+          id +
+          '"   placeholder="' +
+          placeholder +
+          '"  value= "' +
+          value +
+          '" />';
+        str += err ? '<span class="text-danger">' + err + "</span>" : "";
+        str += "</div>";
+        return str;
+      };
+
+      let submiT = () => {
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let age = document.getElementById("age").value;
+        let dept = document.getElementById("department").value;
+        let gradCourse = document.getElementById("graduation").value;
+        let gradYear = document.getElementById("gradYear").value;
+        //  console.log(gradYear);
+        let radio1 = document.getElementsByName("grade");
+        let grade = "";
+        for (i = 0; i < gradEArr.length; i++) {
+          radio1[i].checked ? (grade += gradEArr[i]) : (grade += "");
+        }
+        let postgrad = document.getElementById("1").checked ? "true" : "false";
+        let workBefore = document.getElementById("2").checked
+          ? "true"
+          : "false";
+        let workEx = "";
+        let radio2 = document.getElementsByName("experience");
+        for (i = 0; i < expArr.length; i++) {
+          radio2[i].checked ? (workEx += expArr[i]) : (workEx += "");
+        }
+        //console.log(workEx);
+        let pr = {
+          name: name,
+          email: email,
+          age: age,
+          dept: dept,
+          gradCourse: gradCourse,
+          gradYear: gradYear,
+          gradPerf: grade,
+          postgrad: postgrad,
+          workBefore: workBefore,
+          workEx: workEx,
+        };
+        if (validate(pr)) {
+          //console.log(validate(pr));
+          myProduct = pr;
+          addEmpForm();
+        } else {
+          editIndex >= 0 ? (employees[editIndex] = pr) : employees.push(pr);
+          showEmp();
+        }
+      };
+
+      let showDepartments = () => {
+        if (departmentsArr.length == 0) {
+          let str =
+            '<h2 class="text-center">No Department has been defined</h2>';
+          return str;
+        } else {
+          let b1 = departmentsArr.map((pr) => {
+            let str = '<div class="row border">';
+            str += '<div class="col-4">' + pr + "</div>";
+            str += "</div>";
+            return str;
+          });
+          let header = "<h1>List of Departments</h1>";
+          header += b1.join("");
+          return header;
+        }
+      };
+
+      let addDepartments = () => {
+        let str = makeText(
+          "department",
+          "Name of the Department",
+          "Enter the Department"
+        );
+        str +=
+          '<button class="btn btn-primary" onclick="submitdpmT()"> Submit </button>';
+        return str;
+      };
+
+      let submitdpmT = () => {
+        let dept = document.getElementById("department").value;
+        let b = departmentsArr.find((t) => {
+          return t == dept;
+        });
+        if (b) {
+          alert("Department already present");
+        } else {
+          departmentsArr.push(dept);
+          showDpt();
+        }
+      };
+
+      let Cview = () => {
+        let b1 = employees.map((pr) => {
+          let { name, email, age, dept } = pr;
+
+          let str =
+            '<div class="col-sm-3 border"><h7 class="font-weight-bold text-danger">Employee : </h7>' +
+            name +
+            '<br/><h7 class="font-weight-bold text-danger">Email : </h7>' +
+            email +
+            '<br/><h7 class="font-weight-bold text-danger">Age : </h7>' +
+            age +
+            '<br/><h7 class="font-weight-bold text-danger">Dept : </h7>' +
+            dept +
+            '<br/><div id="show' +
+            name +
+            '"><button class="btn btn-danger" type="submit" onclick=moreDE("' +
+            name +
+            '")>More Details</button></div></div>';
+
+          return str;
+        });
+        let header = '<div class="container">' + makeNav(1);
+        header += '<h1 class="text-center">List of Persons</h1>';
+        header += '<div class="row">';
+        header += b1.join("");
+        header += "<div/>";
+        header += "</div>";
+        header += "<hr  width=100%><br/>";
+        header +=
+          '<button class="btn btn-primary mt-1" onclick="showEmp()"> Original View </button>';
+        // console.log(header);
+
+        document.getElementById("show").innerHTML = header;
+      };
+
+      let makeDrop = (id, arr, header, selVal = "", err = "") => {
+        let str = '<div class="form-group">';
+        str += '<select class="form-control"  id="' + id + '">';
+        str += '<option value=""disabled selected>' + header + "</option>";
+        let s = arr.map((opt) => {
+          let selected = opt === selVal ? "selected" : "";
+          return "<option  " + selected + " >" + opt + "</option>";
+        });
+        // console.log(selVal);
+        str += s.join("");
+        str += "</select>";
+        str += err ? '<span class="text-danger">' + err + "</span>" : "";
+        str += "</div>";
+        return str;
+      };
+
+      let makeRad = (name, arr, value = "", err = "") => {
+        let str = '<div class="form-group form-check form-check-inline">';
+        let r = arr.map((t) => {
+          let c2 = value === t ? "checked" : "";
+          let str = '<div class="form-check">';
+          str +=
+            '<input class="form-check-input" type="radio" name="' +
+            name +
+            '"  value="' +
+            name +
+            '"  ' +
+            c2 +
+            ">";
+          str +=
+            '<label class="form-check-label" for="flexRadioDefault1">' +
+            t +
+            "</label>";
+          str += "</div>";
+          return str;
+        });
+        str += r.join("");
+        str += "</div>";
+        str += err ? '<br/><span class="text-danger">' + err + "</span>" : "";
+        return str;
+      };
+
+      let sort = (colNo) => {
+        switch (colNo) {
+          case 0:
+            employees.sort((p1, p2) => p1.name.localeCompare(p2.name));
+            break;
+          case 1:
+            employees.sort((p1, p2) => p1.email.localeCompare(p2.email));
+            break;
+          case 2:
+            employees.sort((p1, p2) => p1.age - p2.age);
+            break;
+          case 3:
+            employees.sort((p1, p2) => p1.dept.localeCompare(p2.dept));
+            break;
+          case 4:
+            employees.sort((p1, p2) =>
+              p1.gradCourse.localeCompare(p2.gradCourse)
+            );
+            break;
+          case 5:
+            employees.sort((p1, p2) => p1.workEx.localeCompare(p2.workEx));
+            break;
+        }
+        showEmp();
+      };
+
+      let moreDE = (st) => {
+        Cview();
+        let b1 = employees.find((pr) => {
+          return pr.name == st;
+        });
+
+        let { gradCourse, gradYear, gradPerf, postgrad, workBefore, workEx } =
+          b1;
+        let str =
+          '<h7 class="font-weight-bold text-danger">Graduation : </h7>' +
+          gradCourse +
+          '<br/><h7 class="font-weight-bold text-danger">Year of Graduation : </h7>' +
+          gradYear +
+          '<br/><h7 class="font-weight-bold text-danger">Performance in Graduation : </h7>' +
+          gradPerf +
+          '<br/><h7 class="font-weight-bold text-danger">Post Graduate : </h7>' +
+          postgrad +
+          '<br/><h7 class="font-weight-bold text-danger">Worked Before : </h7>' +
+          workBefore +
+          '<br/><h7 class="font-weight-bold text-danger">Work Experience : </h7>' +
+          workEx;
+        document.getElementById("show" + st).innerHTML = str;
+      };
+
+      let deleteE = (i) => {
+        employees.splice(i, 1);
+        showEmp();
+      };
+
+      let editE = (index) => {
+        editIndex = index;
+        myProduct = employees[index];
+        addEmpForm();
+      };
+
+      let validate = (pr) => {
+        if (editIndex < 0) {
+          if (pr.name == "") {
+            error.name = "Employee name is mandatory.";
+          } else {
+            let d = employees.find((t) => {
+              return t.name == pr.name;
+            });
+            if (d) {
+              error.name =
+                "Employee name exists. Enter a different employee name.";
+            } else {
+              error.name = "";
+            }
+          }
+          error.email = pr.email == "" ? "Enter the correct email" : "";
+          error.age = pr.age == "" ? "Enter the appropriate age" : "";
+          error.dept = pr.dept == "" ? "Select the department" : "";
+          error.workEx = pr.workEx == "" ? "Choose the work experience" : "";
+          // console.log(error);
+          return (
+            error.name || error.email || error.age || error.dept || error.workEx
+          );
+        } else {
+          error.email = pr.email == "" ? "Enter the correct email" : "";
+          error.age = pr.age == "" ? "Enter the appropriate age" : "";
+          error.dept = pr.dept == "" ? "Select the department" : "";
+          error.workEx = pr.workEx == "" ? "Choose the work experience" : "";
+          // console.log(error);
+          return (
+            error.name || error.email || error.age || error.dept || error.workEx
+          );
+        }
+      };
+
+      let showExpenses = (arr) => {
+        let b1 = arr.map((pr, index) => {
+          let { name, category, billId, amount, payment, approved } = pr;
+          let str = '<div class="row border-bottom border-left border-right">';
+          str += '<div class="col-2">' + name + "</div>";
+          str += '<div class="col-2">' + category + "</div>";
+          str += '<div class="col-1">' + billId + "</div>";
+          str += '<div class="col-1">' + amount + "</div>";
+          str += '<div class="col-2">' + payment + "</div>";
+          str += '<div class="col-2">' + approved + "</div>";
+          if (approved == true) {
+            str += '<div class="col-2"></div>';
+          } else {
+            str +=
+              '<div class="col-2"><button class="btn btn-secondary btn-sm" onclick=approvE("' +
+              index +
+              '")>Approve</button></div>';
+          }
+          str += "</div>";
+          return str;
+        });
+        let header = "";
+        if (arr == expenseArr) {
+          header +=
+            '<h1 class="text-center">List of Expenses for All Employees</h1>';
+        } else {
+          header +=
+            '<h1 class="text-center">List of Expenses of ' +
+            arr[0].name +
+            "</h1>";
+        }
+        header += '<div class="row bg-dark text-white">';
+        header += '<div class="col-2" onclick=sort(0)>Name</div>';
+        header += '<div class="col-2" onclick=sort(1)>Category</div>';
+        header += '<div class="col-1" onclick=sort(2)>BillId</div>';
+        header += '<div class="col-1" onclick=sort(3)>Amount</div>';
+        header += '<div class="col-2" onclick=sort(4)>Payment</div>';
+        header += '<div class="col-2" onclick=sort(5)>Approved</div>';
+        header += '<div class="col-2"></div>';
+        header += "</div>";
+        header += b1.join("");
+        header +=
+          '<button class="btn btn-primary mt-1" onclick="Cview()"> Change View </button>';
+
+        return header;
+      };
+
+      let approvE = (index) => {
+        let a = expenseArr[index];
+        a.approved = true;
+        showExp(expenseArr);
+      };
+
+      let filterExp = (name) => {
+        let y = expenseArr.filter((t) => {
+          return t.name == name;
+        });
+        showExp(y);
+      };
+
+      let addexpForm = () => {
+        let {
+          name = "",
+          category = "",
+          billId = "",
+          amount = "",
+          payment = "",
+          approved = "",
+        } = myProducT;
+        let str = '<h1 class="text-center">Add a New Expense Form</h1>';
+        str += "<form>";
+        str += makeDrop(
+          "nameExp",
+          emplArr,
+          "Select the Employee",
+          name,
+          err.name
+        );
+        str += makeDrop(
+          "categoryExp",
+          cArr,
+          "Select the category",
+          category,
+          err.category
+        );
+        str += makeText(
+          "billId",
+          "Bill Id",
+          "Enter the Bill Id",
+          billId,
+          err.billId
+        );
+        str += makeText(
+          "amountExp",
+          "Amount",
+          "Enter the Amount",
+          amount,
+          err.amount
+        );
+        str +=
+          "How was the Bill paid : " +
+          makeRad("paymentExp", paymentArr, payment, err.payment);
+        str += '<div class="form-group">';
+        str += '<div class="form-check">';
+        let c1 = approved == "true" ? "checked" : "";
+        str +=
+          '<input class="form-check-input" type="checkbox" value="" id="1exp" ' +
+          c1 +
+          ">";
+        str +=
+          '<label class="form-check-label" for="flexCheckDefault">Has the expense been approved?</label>';
+        str += "</div>";
+        str += "</div>";
+        str += "</form>";
+        str +=
+          '<button class="btn btn-primary" onclick="submitExp()"> Submit </button>';
+        return str;
+      };
+
+      let submitExp = () => {
+        let name = document.getElementById("nameExp").value;
+        let category = document.getElementById("categoryExp").value;
+        let billId = document.getElementById("billId").value;
+        let amount = document.getElementById("amountExp").value;
+        let radio1 = document.getElementsByName("paymentExp");
+        let payment = "";
+        for (i = 0; i < paymentArr.length; i++) {
+          radio1[i].checked ? (payment += paymentArr[i]) : (payment += "");
+        }
+        let approved = document.getElementById("1exp").checked ? true : false;
+        //console.log(workEx);
+        let pr = {
+          name: name,
+          category: category,
+          billId: billId,
+          amount: amount,
+          payment: payment,
+          approved: approved,
+        };
+
+        if (validCheck(pr)) {
+          //console.log(validate(pr));
+          myProducT = pr;
+          addExp();
+        } else {
+          expenseArr.push(pr);
+          showExp(expenseArr);
+        }
+      };
+
+      let validCheck = (pr) => {
+        err.name = pr.name == "" ? "Select the Employee name" : "";
+        err.category = pr.category == "" ? "Select the Category" : "";
+        err.billId = pr.billId == "" ? "Bill Id is mandatory" : "";
+        err.amount = pr.amount == "" ? "Amount is mandatory" : "";
+        err.payment =
+          pr.payment == "" ? "Choose the applicable payment mode" : "";
+        return (
+          err.name || err.category || err.billId || err.amount || err.payment
+        );
+      };
+    </script>
+  </body>
+</html>
