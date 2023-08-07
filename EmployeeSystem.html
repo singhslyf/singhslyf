@@ -39,7 +39,7 @@
           age: 27,
           dept: "Technology",
           gradCourse: "B.Tech",
-          gradYear: "2015",
+          gradYear: 2015,
           gradPerf: "Good",
           postgrad: false,
           workBefore: true,
@@ -259,6 +259,8 @@
         "Others",
       ];
 
+      let newArr = [];
+
       let paymentArr = ["Corporate Card", "Bill to company", "Self"];
 
       let editIndex = -1;
@@ -270,7 +272,7 @@
       let gradY = [];
       let gY = () => {
         for (let i = 2000; i <= 2020; i++) {
-          gradY.push("" + i + "");
+          gradY.push(i);
         }
       };
       gY();
@@ -401,12 +403,13 @@
           age = "",
           dept = "",
           gradCourse = "",
-          gradYear = "",
+          gradYear = 0,
           gradPerf = "",
           postgrad = "",
           workBefore = "",
           workEx = "",
         } = myProduct;
+        console.log(myProduct);
         let heading =
           editIndex >= 0 ? "Edit Employee Details" : "Add a Employee Form";
         let str = '<h1 class="text-center">' + heading + "</h1>";
@@ -445,7 +448,7 @@
           makeRad("grade", gradEArr, gradPerf);
         str += '<div class="form-group">';
         str += '<div class="form-check">';
-        let c1 = postgrad == "true" ? "checked" : "";
+        let c1 = postgrad == true ? "checked" : "";
         str +=
           '<input class="form-check-input" type="checkbox" value="" id="1" ' +
           c1 +
@@ -454,7 +457,7 @@
           '<label class="form-check-label" for="flexCheckDefault">Are you a post graduate ?</label>';
         str += "</div>";
         str += '<div class="form-check">';
-        let c4 = workBefore == "true" ? "checked" : "";
+        let c4 = workBefore == true ? "checked" : "";
         str +=
           '<input class="form-check-input" type="checkbox" value="" id="2" ' +
           c4 +
@@ -616,6 +619,7 @@
         let str = '<div class="form-group">';
         str += '<select class="form-control"  id="' + id + '">';
         str += '<option value=""disabled selected>' + header + "</option>";
+        console.log(selVal);
         let s = arr.map((opt) => {
           let selected = opt === selVal ? "selected" : "";
           return "<option  " + selected + " >" + opt + "</option>";
@@ -763,10 +767,19 @@
           if (approved == true) {
             str += '<div class="col-2"></div>';
           } else {
-            str +=
-              '<div class="col-2"><button class="btn btn-secondary btn-sm" onclick=approvE("' +
-              index +
-              '")>Approve</button></div>';
+            if (arr == expenseArr) {
+              str +=
+                '<div class="col-2"><button class="btn btn-secondary btn-sm" onclick="approvE(' +
+                index +
+                "," +
+                'expenseArr)">Approve</button></div>';
+            } else {
+              str +=
+                '<div class="col-2"><button class="btn btn-secondary btn-sm" onclick="approvE(' +
+                index +
+                "," +
+                'newArr)">Approve</button></div>';
+            }
           }
           str += "</div>";
           return str;
@@ -797,17 +810,25 @@
         return header;
       };
 
-      let approvE = (index) => {
-        let a = expenseArr[index];
+      let approvE = (index, arr) => {
+        //console.log(index);
+        //console.log(arr);
+        let a = arr[index];
         a.approved = true;
-        showExp(expenseArr);
+        showExp(arr);
+        //console.log(expenseArr);
       };
 
       let filterExp = (name) => {
-        let y = expenseArr.filter((t) => {
+        newArr = expenseArr.filter((t) => {
           return t.name == name;
         });
-        showExp(y);
+        if (newArr.length == 0) {
+          alert("No Expenses for " + name);
+        } else {
+          //console.log(y);
+          showExp(newArr);
+        }
       };
 
       let addexpForm = () => {
